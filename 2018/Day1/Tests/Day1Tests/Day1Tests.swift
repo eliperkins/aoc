@@ -10,7 +10,18 @@ final class Day1Tests: XCTestCase {
     }
 
     func testDay1Answer() {
-        XCTAssertEqual(Day1.day1(TestString), 574)
+        XCTAssertEqual(Day1.day1(Day1Input), 574)
+    }
+
+    func testDay1PartTwo() {
+        XCTAssertEqual(Day1.day1PartTwo("+1, -1"), 0)
+        XCTAssertEqual(Day1.day1PartTwo("+3, +3, +4, -2, -4"), 10)
+        XCTAssertEqual(Day1.day1PartTwo("-6, +3, +8, +5, -6"), 5)
+        XCTAssertEqual(Day1.day1PartTwo("+7, +7, -2, -7, -4"), 14)
+    }
+
+    func testDay1bAnswer() {
+        XCTAssertEqual(Day1.day1PartTwo(Day1Input), 452)
     }
 
     static var allTests = [

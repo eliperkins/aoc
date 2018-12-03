@@ -1,4 +1,4 @@
-public let TestString = """
+public let Day1Input = """
 +13
 +4
 -8
