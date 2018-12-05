@@ -26,6 +26,7 @@ let testInput = """
         XCTAssertEqual(answer.guardId, 10)
         XCTAssertEqual(answer.minute, 24)
         XCTAssertEqual(answer.answer, 240)
+        XCTAssertEqual(answer.part2Answer, 4455)
     }
 
     func testDay4Part1() {
@@ -33,6 +34,7 @@ let testInput = """
         XCTAssertEqual(answer.guardId, 3023)
         XCTAssertEqual(answer.minute, 33)
         XCTAssertEqual(answer.answer, 99759)
+        XCTAssertEqual(answer.part2Answer, 97884)
     }
 
     static var allTests = [

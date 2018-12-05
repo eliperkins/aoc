@@ -5,6 +5,7 @@ struct Day4 {
         let guardId: Int
         let minute: Int
         let answer: Int
+        let part2Answer: Int
     }
 
     enum EventType {
@@ -104,6 +105,22 @@ struct Day4 {
             })?
             .offset 
             else { fatalError("no sleepy guards") }
-        return Solution(guardId: id, minute: sleepiestMin, answer: id * sleepiestMin)
+        
+        let xs: Array<(guardId: Int, min: Int, count: Int)> = sleepingMinutes.map { (guardId, mins) in 
+            guard let maxMin = mins.enumerated().max(by: { $0.element < $1.element }) else { fatalError() }
+            return (guardId: guardId, min: maxMin.offset, count: maxMin.element)
+        }
+        guard let sleepiest = xs.max(by: { $0.count < $1.count }) else { fatalError() }
+
+        // let (guardId, index, count) = sleepingMinutes.map { (entry: (Int, Array<Int>)) in
+        //     let guardId: Int = entry.0
+        //     let minutes: Array<Int> = entry.1
+        //     let (index, count) = minutes.enumerated().max(by: { $0.element < $1.element }) ?? (0, 0)
+        //     print("\(guardId) max min was \(index) with \(count)" )
+        //     return (guardId, index, count)
+        // }.max(by: { (a, b) in 
+        //     a.2 > b.2
+        // })!
+        return Solution(guardId: id, minute: sleepiestMin, answer: id * sleepiestMin, part2Answer: sleepiest.guardId * sleepiest.min)
     }
 }
